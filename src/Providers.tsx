@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
+import { Users } from "./state";
 
 export default function Providers(props: PropsWithChildren) {
-  return <>{props.children}</>;
+  return <Users.UsersProvider>{props.children}</Users.UsersProvider>;
 }
