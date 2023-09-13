@@ -6,6 +6,7 @@ import { UserDataType } from "../../@types/data/user.data-type";
 import { UsersCard } from "../../features";
 import { fetchSwrData } from "../../helpers/swrFetcherFactory.helper";
 import { FilledButton } from "../../components/button";
+import FadeUp from "../../animated/fade/fadeUp.compoent";
 
 export default function UsersListPage() {
   const [page, setPage] = useState(1);
@@ -21,11 +22,13 @@ export default function UsersListPage() {
       {isLoading ? (
         <Loading className="w-20 h-20" />
       ) : (
-        <div className="grid-cols-3 grid">
+        <div className="md:grid-cols-3 sm:grid-cols-2 grid-cols-1 grid">
           {data.map((item: UserDataType, index: number) => (
-            <div key={`user-${index}`} className="p-10">
-              <UsersCard {...item} />
-            </div>
+            <FadeUp key={`user-${index}`} delay={(index + 1) / 10}>
+              <div className="p-10">
+                <UsersCard {...item} />
+              </div>
+            </FadeUp>
           ))}
         </div>
       )}
